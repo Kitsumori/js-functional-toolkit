@@ -1,5 +1,5 @@
-import { test, expect } from 'vitest';
-import { deepEqual } from '../toolkit/compareTools';
+import { test, expect, vi } from 'vitest';
+import { deepEqual, ownBucle, dominantWritingDirection } from '../toolkit/compareTools';
 
 test("Check equal type of string object different content", () => {
     const elementOne = "some string"
@@ -47,4 +47,39 @@ test("Check equal type of object and content", () => {
     const elementOne = {name: "Mario", lastName: "Mori"}
     const elementTwo = {name: "Mario", lastName: "Mori"}
     expect(deepEqual(elementOne, elementTwo)).toBeTruthy()
+})
+
+test("ownBucle test", () => {
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {})
+    
+    const expectedResult = [
+        ["a"],
+        ["ab"],
+        ["abc"],
+        ["abcd"]
+    ]
+
+    const verification = (text) => text.length > 4;
+    const update = (text) => {
+        const chars = "abcd"
+        return `${text}${chars[text.length]}`
+    }
+    const body = (text) => console.log(text)
+    ownBucle("a", verification, update, body)
+    expect(logSpy.mock.calls).toEqual(expectedResult)
+})
+
+test("dominantWrittingDirection is ltr", () => {
+    const text = "Hola mi nombre es Mario Daniel Mori";
+    expect(dominantWritingDirection(text)).toEqual("ltr")
+})
+
+test("dominantWrittingDirection is rtl", () => {
+    const text = "مرحبا";
+    expect(dominantWritingDirection(text)).toEqual("rtl")
+})
+
+test("dominantWrittingDirection is ttb", () => {
+    const text = "ᠮᠣᠩᠭᠣᠯ";
+    expect(dominantWritingDirection(text)).toEqual("ttb")
 })

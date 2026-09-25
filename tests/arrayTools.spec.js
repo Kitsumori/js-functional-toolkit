@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { range, sum, reverseArray, reverseArrayInPlace } from "../toolkit/arrayTools";
+import { range, sum, reverseArray, reverseArrayInPlace, flatteringArray, everyBucle, everySome } from "../toolkit/arrayTools";
 
 test("range with step 1", () => {
     expect(range(1, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -26,4 +26,38 @@ test("reverseArrayInPlace", () => {
     reverseArrayInPlace(array)
     expect(array).toBe(array)
     expect(array).toEqual([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+})
+
+test("flattering array of arrays", () => {
+    const array = [
+        [1,2,3],
+        [1,2,3],
+        [8,9,7]
+    ]
+    const expectedResult = [1,2,3,1,2,3,8,9,7]
+    expect(flatteringArray(array)).toEqual(expectedResult)
+})
+
+test("everyBucle is true", () => {
+    const array = [1,2,3,4,5]
+    const test = (arr) => arr < 6
+    expect(everyBucle(array, test)).toBeTruthy()
+})
+
+test("everyBucle is false", () => {
+    const array = [1,2,3,4,5]
+    const test = (arr) => arr <= 1
+    expect(everyBucle(array, test)).toBeFalsy()
+})
+
+test("everySome is true", () => {
+    const array = [1,2,3,4,5]
+    const test = (arr) => arr > 6
+    expect(everySome(array, test)).toBeTruthy()
+})
+
+test("everySome is false", () => {
+    const array = [1,2,3,4,5]
+    const test = (arr) => arr >= 1
+    expect(everySome(array, test)).toBeFalsy()
 })

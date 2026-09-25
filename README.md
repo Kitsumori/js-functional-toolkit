@@ -79,3 +79,39 @@ Para saber si los valores deben compararse directamente (usando el operador
 typeof. Si produce "object" para ambos valores, deberías hacer una comparación profunda. Pero debes tener en cuenta una excepción tonta: debido a un accidente histórico, typeof null también produce "object".
 La función Object.keys será útil cuando necesites recorrer las propiedades
 de los objetos para compararlas
+
+### Chapter 5 - Funciones de orden superior
+
+#### Aplanamiento
+
+Utiliza el método reduce en combinación con el método concat para “aplanar”
+un array de arrays en un único array que contenga todos los elementos de los
+arrays originales.
+
+#### Tu propio bucle
+
+Escribe una función de orden superior loop que proporcione algo similar a una
+declaración for loop. Debería recibir un valor, una función de prueba, una
+función de actualización y una función de cuerpo. En cada iteración, primero
+debe ejecutar la función de prueba en el valor actual del bucle y detenerse si
+devuelve falso. Luego debe llamar a la función de cuerpo, dándole el valor
+actual, y finalmente llamar a la función de actualización para crear un nuevo
+valor y empezar de nuevo desde el principio.
+Al definir la función, puedes usar un bucle regular para hacer el bucle real.
+
+#### Everything
+
+Los arrays también tienen un método every análogo al método some. Este
+método devuelve true cuando la función dada devuelve true para cada elemento
+en el array. En cierto modo, some es una versión del operador || que actúa en
+arrays, y every es como el operador &&.
+
+Implementa every como una función que recibe un array y una función de
+predicado como parámetros. Escribe dos versiones, una usando un bucle y otra
+usando el método some.
+
+#### Dirección de escritura dominante
+
+Escribe una función que calcule la dirección de escritura dominante en una cadena de texto. Recuerda que cada objeto script tiene una propiedad direction
+que puede ser "ltr" (de izquierda a derecha), "rtl" (de derecha a izquierda) o
+"ttb" (de arriba a abajo).

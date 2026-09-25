@@ -58,3 +58,33 @@ export function reverseArrayInPlace(array) {
     }
     return array;
 }
+
+/**
+ * Recibe un array de arrays y lo aplana
+ * @param {any[any[]]} array
+ * @returns {any[]}
+ */
+export function flatteringArray(array) {
+    return array.reduce((result, arr) => result.concat(arr), [])
+}
+
+/** Every utilizando un bucle
+ * @param {any[]} array
+ * @param {(any) => boolean} fn
+ * @returns {boolean}
+ */
+export function everyBucle(array, fn) {
+    for (let arr of array) {
+        if (!fn(arr)) return false
+    }
+    return true
+}
+
+/** Every utilizando some
+ * @param {any[]} array
+ * @param {(any) => boolean} fn
+ * @returns {boolean}
+ */
+export function everySome(array, fn) {
+    return !array.some(fn)
+}
