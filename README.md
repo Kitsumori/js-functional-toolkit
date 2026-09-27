@@ -136,13 +136,16 @@ Set. Al igual que una instancia de Map, un conjunto contiene una colección de
 valores. A diferencia de Map, no asocia otros valores con esos, solo realiza un
 seguimiento de qué valores forman parte del conjunto. Un valor puede formar
 parte de un conjunto solo una vez: agregarlo nuevamente no tiene ningún efecto.
+
 Escribe una clase llamada Group (ya que Set está siendo utilizado). Al igual
 que Set, tiene los métodos add, delete y has. Su constructor crea un grupo
 vacío, add agrega un valor al grupo (pero solo si aún no es miembro), delete
 elimina su argumento del grupo (si era miembro), y has devuelve un valor
 booleano que indica si su argumento es miembro del grupo.
+
 Usa el operador ===, o algo equivalente como indexOf, para determinar si
 dos valores son iguales.
+
 Dale a la clase un método estático from que tome un objeto iterable como
 argumento y cree un grupo que contenga todos los valores producidos al iterar
 sobre él.
@@ -152,8 +155,11 @@ sobre él.
 Haz que la clase Group del ejercicio anterior sea iterable. Refiérete a la sección
 sobre la interfaz del iterador anteriormente en el capítulo si no tienes claro la
 forma exacta de la interfaz.
+
 Si utilizaste un array para representar los miembros del grupo, no devuelvas
 simplemente el iterador creado al llamar al método Symbol.iterator en el array.
+
 Eso funcionaría, pero va en contra del propósito de este ejercicio.
+
 Está bien si tu iterador se comporta de manera extraña cuando el grupo se
 modifica durante la iteración.
