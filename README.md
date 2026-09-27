@@ -115,3 +115,45 @@ usando el método some.
 Escribe una función que calcule la dirección de escritura dominante en una cadena de texto. Recuerda que cada objeto script tiene una propiedad direction
 que puede ser "ltr" (de izquierda a derecha), "rtl" (de derecha a izquierda) o
 "ttb" (de arriba a abajo).
+
+### Chapter 6 - La vida secreta de los objectos
+
+#### Un tipo de vector
+
+Escribe una clase Vec que represente un vector en el espacio bidimensional.
+Toma los parámetros x e y (números), que debería guardar en propiedades del
+mismo nombre.
+Dale a la clase Vec dos métodos en su prototipo, plus y minus, que tomen
+otro vector como parámetro y devuelvan un nuevo vector que tenga la suma o
+la diferencia de los valores x e y de los dos vectores (this y el parámetro).
+Agrega una propiedad getter length al prototipo que calcule la longitud del
+vector, es decir, la distancia del punto (x, y) desde el origen (0, 0).
+
+#### Grupos
+
+El entorno estándar de JavaScript proporciona otra estructura de datos llamada
+Set. Al igual que una instancia de Map, un conjunto contiene una colección de
+valores. A diferencia de Map, no asocia otros valores con esos, solo realiza un
+seguimiento de qué valores forman parte del conjunto. Un valor puede formar
+parte de un conjunto solo una vez: agregarlo nuevamente no tiene ningún efecto.
+Escribe una clase llamada Group (ya que Set está siendo utilizado). Al igual
+que Set, tiene los métodos add, delete y has. Su constructor crea un grupo
+vacío, add agrega un valor al grupo (pero solo si aún no es miembro), delete
+elimina su argumento del grupo (si era miembro), y has devuelve un valor
+booleano que indica si su argumento es miembro del grupo.
+Usa el operador ===, o algo equivalente como indexOf, para determinar si
+dos valores son iguales.
+Dale a la clase un método estático from que tome un objeto iterable como
+argumento y cree un grupo que contenga todos los valores producidos al iterar
+sobre él.
+
+#### Grupos iterables
+
+Haz que la clase Group del ejercicio anterior sea iterable. Refiérete a la sección
+sobre la interfaz del iterador anteriormente en el capítulo si no tienes claro la
+forma exacta de la interfaz.
+Si utilizaste un array para representar los miembros del grupo, no devuelvas
+simplemente el iterador creado al llamar al método Symbol.iterator en el array.
+Eso funcionaría, pero va en contra del propósito de este ejercicio.
+Está bien si tu iterador se comporta de manera extraña cuando el grupo se
+modifica durante la iteración.
