@@ -163,3 +163,33 @@ Eso funcionaría, pero va en contra del propósito de este ejercicio.
 
 Está bien si tu iterador se comporta de manera extraña cuando el grupo se
 modifica durante la iteración.
+
+### Chapter 8 - Bugs y Errores
+
+#### La caja cerrada con llave
+
+Considera el siguiente objeto (bastante artificial):
+
+```javascript
+const box = new class {
+    locked = true;
+    #content = [];
+    unlock() { this.locked = false; }
+    lock() { this.locked = true; }
+    get content() {
+        if (this.locked) throw new Error("¡Cerrado con llave!");
+        return this.#content;
+    }
+};
+```
+
+Es una caja con una cerradura. Hay un array en la caja, pero solo puedes
+acceder a él cuando la caja está desbloqueada.
+
+Escribe una función llamada withBoxUnlocked que reciba como argumento
+un valor de función, desbloquee la caja, ejecute la función y luego asegure que
+la caja esté cerrada de nuevo antes de devolverla, independientemente de si la
+función de argumento devolvió normalmente o lanzó una excepción.
+
+Para puntos adicionales, asegúrate de que si llamas a withBoxUnlocked cuando
+la caja ya está desbloqueada, la caja permanezca desbloqueada.

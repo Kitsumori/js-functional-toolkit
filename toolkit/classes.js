@@ -41,6 +41,19 @@ export class Group {
         this.group = []
     }
 
+    [Symbol.iterator](){
+        let index = 0
+        const members = this.group
+        return {
+            next() {
+                if (index < members.length) {
+                    return { value: members[index++], done: false }
+                }
+                return { done: true }
+            }
+        }
+    }
+
     add(x){
         if (!this.has(x))
             this.group.push(x)
@@ -62,10 +75,3 @@ export class Group {
         return group
     }
 }
-
-class GroupIterator {
-    
-}
-
-
-
