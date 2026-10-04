@@ -194,7 +194,7 @@ función de argumento devolvió normalmente o lanzó una excepción.
 Para puntos adicionales, asegúrate de que si llamas a withBoxUnlocked cuando
 la caja ya está desbloqueada, la caja permanezca desbloqueada.
 
-### Chapter 9 - Modulos
+### Chapter 10 - Modulos
 
 #### Módulo de caminos
 

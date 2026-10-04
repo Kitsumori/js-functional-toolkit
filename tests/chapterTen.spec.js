@@ -1,5 +1,5 @@
 import { expect, test} from "vitest";
-import roadGraph from "../toolkit/chapterNine.js";
+import roadGraph from "../toolkit/chapterTen.js";
 
 test("roadGraph", () => {
     expect(roadGraph["Alice's House"]).toContain("Bob's House");
