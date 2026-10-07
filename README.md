@@ -203,3 +203,49 @@ array de caminos y exporte la estructura de datos de gráfico que los representa
 como roadGraph. Debería depender de un módulo ./graph.js, que exporta una
 función buildGraph que se utiliza para construir el gráfico. Esta función espera
 un array de arrays de dos elementos (los puntos de inicio y fin de los caminos).
+
+### Chapter 11 - Programación asincronica
+
+#### Momentos de tranquilidad
+
+Hay una cámara de seguridad cerca del laboratorio de Carla que se activa con un sensor de movimiento. 
+
+Está conectada a la red y comienza a enviar un flujo de video cuando está activa. 
+
+Como prefiere no ser descubierta, Carla ha configurado un sistema que detecta este tipo de tráfico de red inalámbrico y enciende una luz en su guarida cada vez que hay actividad afuera, para que ella sepa cuándo mantenerse en silencio.
+
+También ha estado registrando los momentos en que la cámara se activa desde hace un tiempo, y quiere utilizar esta información para visualizar qué momentos, en una semana promedio, tienden a ser tranquilos y cuáles tienden a ser ocupados. 
+
+El registro se almacena en archivos que contienen un número de marca de tiempo por línea (como devuelto por Date.now()).
+
+1695709940692
+1695701068331
+1695701189163
+
+El archivo "camera_logs.txt" contiene una lista de archivos de registro. 
+
+Escribe una función asíncrona activityTable(día) que, para un día de la semana dado, devuelva un array de 24 números, uno para cada hora del día, que contenga la cantidad de observaciones de tráfico de red de la cámara vista en esa hora del día. 
+
+Los días se identifican por número utilizando el sistema utilizado por Date.getDay, donde el domingo es 0 y el sábado es 6.
+
+La función activityGraph, proporcionada por el sandbox, resume dicha tabla en una cadena.
+
+Utiliza la función textFile definida anteriormente, que al recibir un nombre de archivo devuelve una promesa que se resuelve en el contenido del archivo.
+
+Recuerda que new Date(marcaDeTiempo) crea un objeto Date para ese momento, que tiene métodos getDay y getHours que devuelven el día de la semana y la hora del día.
+
+Ambos tipos de archivos, la lista de archivos de registro y los propios archivos de registro, tienen cada dato en su propia línea, separados por caracteres de nueva línea ("\n").
+
+#### Construyendo Promise.all
+
+Como vimos, dado un array de promesas, Promise.all devuelve una promesa que espera a que todas las promesas en el array finalicen. 
+
+Luego tiene éxito, devolviendo un array de valores de resultado. 
+
+Si una promesa en el array falla, la promesa devuelta por all también falla, con la razón de fallo de la promesa que falló.
+
+Implementa algo similar tú mismo como una función regular llamada Promise_all.
+
+Recuerda que después de que una promesa tiene éxito o falla, no puede volver a tener éxito o fallar, y las llamadas posteriores a las funciones que la resuelven se ignoran. 
+
+Esto puede simplificar la forma en que manejas el fallo de tu promesa.
